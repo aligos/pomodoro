@@ -1,5 +1,6 @@
 <template name="todosItem">
   <div class="list-item {{checkedClass}} {{editingClass}}">
+  	<span class="pomodate">{{formatDate createdAt}}</span>
     <label class="checkbox">
       <input type="checkbox" checked="{{checked}}" name="checked">
       <span class="checkbox-custom"></span>

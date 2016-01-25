@@ -162,12 +162,14 @@ Template.listsShow.events({
     var $input = $(event.target).find('[type=text]');
     if (! $input.val())
       return;
+    var bulan = moment().format('MMMM');
 
     Todos.insert({
       listId: this._id,
       text: $input.val(),
       checked: false,
-      createdAt: new Date()
+      createdAt: new Date(),
+      bulan: bulan
     });
     Lists.update(this._id, {$inc: {incompleteCount: 1}});
     $input.val('');

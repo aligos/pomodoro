@@ -126,5 +126,12 @@ Template.appBody.events({
     list._id = Lists.insert(list);
 
     Router.go('listsShow', list);
+  },
+  'click .chart-btn': function() {
+    Router.go('listsChart');
   }
+});
+
+Template.registerHelper('formatDate', function(date){
+  return moment(date).format('MMMM Do YYYY, h:mm:ss a');
 });

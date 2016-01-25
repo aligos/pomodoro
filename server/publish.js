@@ -15,3 +15,11 @@ Meteor.publish('todos', function(listId) {
 
   return Todos.find({listId: listId});
 });
+
+Meteor.publish('pomodoro', function() {
+	return Todos.find();
+});
+
+Meteor.publish('chart', function() {
+	return Todos.find();
+});
