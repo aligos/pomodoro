@@ -101,10 +101,9 @@ Template.chart.onRendered(function() {
         return "Oct"
       } else if (bulan === "Nov") {
         return "Nov"
-      } else if (bulan === "Dec") {
+      } else {
         return "Dec"
-      } else
-        return
+      }
     });
     data = _.defaults(data, {Jan: "Jan", Feb: "Feb", Mar: "Mar", Apr: "Apr", May: "May", Jun: "Jun", Jul: "Jul", Aug: "Aug", Sep: "Sep", Oct: "Oct", Nov: "Nov", Dec: "Dec"});
     data = _.toArray(data);
