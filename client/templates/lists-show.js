@@ -162,7 +162,7 @@ Template.listsShow.events({
     var $input = $(event.target).find('[type=text]');
     if (! $input.val())
       return;
-    var bulan = moment().format('MMMM');
+    var bulan = moment().format('MMM');
 
     Todos.insert({
       listId: this._id,
