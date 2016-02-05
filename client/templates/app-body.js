@@ -66,9 +66,9 @@ Template.appBody.helpers({
   cordova: function() {
     return Meteor.isCordova && 'cordova';
   },
-  emailLocalPart: function() {
-    var email = Meteor.user().emails[0].address;
-    return email.substring(0, email.indexOf('@'));
+  userName: function() {
+    var username = Meteor.user().username;
+    return username;
   },
   userMenuOpen: function() {
     return Session.get(USER_MENU_KEY);
@@ -115,14 +115,15 @@ Template.appBody.events({
     Meteor.logout();
 
     // if we are on a private list, we'll need to go to a public one
-    var current = Router.current();
-    if (current.route.name === 'listsShow' && current.data().userId) {
-      Router.go('listsShow', Lists.findOne({userId: {$exists: false}}));
-    }
+    // var current = Router.current();
+    // if (current.route.name === 'listsShow' && current.data().userId) {
+    //   // Router.go('listsShow', Lists.findOne({userId: {$exists: false}}));
+    Router.go('signin');
   },
 
   'click .js-new-list': function() {
-    var list = {name: Lists.defaultName(), incompleteCount: 0};
+    var currentUser  = Meteor.userId();
+    var list = {name: Lists.defaultName(), incompleteCount: 0, createdBy: currentUser};
     list._id = Lists.insert(list);
 
     Router.go('listsShow', list);
@@ -133,5 +134,5 @@ Template.appBody.events({
 });
 
 Template.registerHelper('formatDate', function(date){
-  return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+  return moment(date).format('MM/DD/YY, H:mm');
 });

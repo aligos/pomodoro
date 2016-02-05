@@ -25,6 +25,9 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px @color-empty inset;
 }
 
+label.checkbox.true {
+  display:none;
+}
 // Custom checkbox
 .checkbox {
   display: inline-block;
@@ -41,9 +44,12 @@ input:-webkit-autofill {
       .position(absolute, 50%, auto, auto, 50%, .85em, .85em);
       .transform(translate3d(-50%, -50%, 0));
       background: transparent;
-      box-shadow: #abdfe3 0 0 0 1px inset;
       content: '';
       display: block;
+    }
+
+    &:checked + span {
+      display: none;
     }
 
     &:checked + span:before {
@@ -64,7 +70,6 @@ input:-webkit-autofill {
     	-moz-osx-font-smoothing: grayscale;
 
     	// Checkmark icon
-      content: "\e612";
     }
   }
 }

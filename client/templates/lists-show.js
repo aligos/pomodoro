@@ -88,10 +88,10 @@ var toggleListPrivacy = function(list) {
   if (list.userId) {
     Lists.update(list._id, {$unset: {userId: true}});
   } else {
-    // ensure the last public list cannot be made private
-    if (Lists.find({userId: {$exists: false}}).count() === 1) {
-      return alert("Sorry, you cannot make the final public list private!");
-    }
+    // // ensure the last public list cannot be made private
+    // if (Lists.find({userId: {$exists: false}}).count() === 1) {
+    //   return alert("Sorry, you cannot make the final public list private!");
+    // }
 
     Lists.update(list._id, {$set: {userId: Meteor.userId()}});
   }

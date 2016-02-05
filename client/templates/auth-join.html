@@ -1,4 +1,4 @@
-<template name="join">
+<template name="signup">
   <div class="page auth">
     <nav>
       <div class="nav-group">
@@ -8,7 +8,7 @@
 
     <div class="content-scrollable">
       <div class="wrapper-auth">
-        <h1 class="title-auth">Join.</h1>
+        <h1 class="title-auth">Sign Up.</h1>
         <p class="subtitle-auth" >Joining allows you to make private lists</p>
 
         <form>
@@ -19,6 +19,11 @@
               {{/each}}
             </div>
           {{/if}}
+
+          <div class="input-symbol  {{errorClass 'username'}}">
+            <input type="text" name="username" placeholder="Username" />
+            <span class="icon-user-add" title="Your Name"></span>
+          </div>
 
           <div class="input-symbol  {{errorClass 'email'}}">
             <input type="email" name="email" placeholder="Your Email" />
@@ -35,7 +40,7 @@
             <span class="icon-lock" title="Confirm Password"></span>
           </div>
 
-          <button type="submit" class="btn-primary">Join Now</button>
+          <button type="submit" class="btn-primary">Sign Up Now</button>
         </form>
       </div>
 

@@ -91,6 +91,9 @@ Template.pomodoro.events({
     	Lists.update(this.listId, {$inc: {incompleteCount: -1}});
 		clearInterval( Session.get( 'pomodoroTimer' ) );
 		Session.set( 'pomodoroTimer', false );
+		Session.set( 'currentPomodoroTime', Session.get( 'timerType' ) );
+		var listTitle = Lists.findOne(this.listId).name;
+		document.title = "Todos from " + listTitle;
 		Router.go('listsShow', Lists.findOne(this.listId));
 	},
 	'click .pomodoro-reset': function( e ) {

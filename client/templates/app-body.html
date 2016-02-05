@@ -10,7 +10,7 @@
               {{else}}
               <span class="icon-arrow-down"></span>
             {{/if}}
-            {{emailLocalPart}}
+            {{userName}}
           </a>
           {{#if userMenuOpen}}
             <a class="js-logout btn-secondary">Logout</a>
@@ -19,10 +19,11 @@
       {{else}}
         <div class="btns-group">
           <a href="{{pathFor 'signin'}}" class="btn-secondary">Sign In</a>
-          <a href="{{pathFor 'join'}}" class="btn-secondary">Join</a>
+          <a href="{{pathFor 'signup'}}" class="btn-secondary">Sign Up</a>
         </div>
       {{/if}}
 
+      {{#if currentUser}}
       <div class="list-todos">
         <a class="chart-btn btn-secondary">View Chart</a>
         <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
@@ -40,6 +41,7 @@
         {{/each}}
 
       </div>
+      {{/if}}
     </section>
 
     {{#unless connected}}

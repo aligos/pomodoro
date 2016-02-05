@@ -1,10 +1,10 @@
 var ERRORS_KEY = 'joinErrors';
 
-Template.join.onCreated(function() {
+Template.signup.onCreated(function() {
   Session.set(ERRORS_KEY, {});
 });
 
-Template.join.helpers({
+Template.signup.helpers({
   errorMessages: function() {
     return _.values(Session.get(ERRORS_KEY));
   },
@@ -13,14 +13,26 @@ Template.join.helpers({
   }
 });
 
-Template.join.events({
+function clearFormFields() {
+  $('[name=username]').val("");
+  $('[name=email]').val("");
+  $('[name=password]').val("");
+  $('[name=confirm]').val(""); 
+}
+
+Template.signup.events({
   'submit': function(event, template) {
     event.preventDefault();
+    var username = template.$('[name=username]').val();
     var email = template.$('[name=email]').val();
     var password = template.$('[name=password]').val();
     var confirm = template.$('[name=confirm]').val();
 
     var errors = {};
+
+    if (! username) {
+      errors.username = 'Username required';
+    }
 
     if (! email) {
       errors.email = 'Email required';
@@ -40,14 +52,18 @@ Template.join.events({
     }
 
     Accounts.createUser({
+      username: username,
       email: email,
       password: password
     }, function(error) {
       if (error) {
         return Session.set(ERRORS_KEY, {'none': error.reason});
       }
-
-      Router.go('home');
+      // var currentUser  = Meteor.userId();
+      // var list = {name: Lists.defaultName(), incompleteCount: 0, createdBy: currentUser};
+      // list._id = Lists.insert(list);
+      
     });
+    clearFormFields();
   }
 });

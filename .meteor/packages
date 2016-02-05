@@ -14,9 +14,11 @@ insecure
 less
 iron:router@0.9.4
 accounts-password
+accounts-base
 jquery
 tracker
 check
 momentjs:moment
 maazalik:highcharts
 reactive-var
+email
